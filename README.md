@@ -1,12 +1,14 @@
 # Restaurant Finder
 
 O projeto basicamente seria um aplicativo web para listar/avaliar restaurantes num determinado raio de distância a partir da localização ou pesquisa de um usuário.
+[WEB APP - Clique aqui](https://verasunb.github.io/PlaceFinder/)
+
 
 ### Requirements
 - [X] Play Framework
-- [ ] Banco de Dados
+- [X] Banco de Dados
 - [X] Front-End
-- [ ] Interligar Tudo
+- [X] Interligar Tudo
 
 # Funcionamento
 
