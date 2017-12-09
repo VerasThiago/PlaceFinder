@@ -1,49 +1,43 @@
 
 lugar = ""
 function googleMaps(lat,lng) {
-   var marker, i;
-   var crd;
-   var map;
-   //console.log('lugar = ' + lugar);
-   if(navigator.geolocation) {
-       navigator.geolocation.getCurrentPosition(function(position){
+    var marker, i;
+    var crd;
+    var map;
 
-           var loc;
-           // Problem: lat,lng can't get position.coords to pass to map out of natvigator function, so I needed to add map into and markers too.
-           if(lat == null) loc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-           else loc = new google.maps.LatLng(lat,lng);
+    if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
 
-           map = new google.maps.Map(document.getElementById('map'), {
-               zoom: 18,
-               center: loc,
-               mapTypeId: google.maps.MapTypeId.ROADMAP
-           });
+            var loc;
+            // Problem: lat,lng can't get position.coords to pass to map out of natvigator function, so I needed to add map into and markers too.
+            if(lat == null) loc = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+            else loc = new google.maps.LatLng(lat,lng);
 
-           marker = new google.maps.Marker({ // Marcador do User
-               position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
-               map: map,
-               icon: 'http://maps.google.com/mapfiles/kml/pal3/icon32.png'
-           });
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: loc,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
 
-           lugar = new google.maps.Marker({ // Marcador do Novo Local
-               position: new google.maps.LatLng(position.coords.latitude + 0.00020,position.coords.longitude + 0.00020),
-               map: map,
-               draggable: true
-           });
-                             
 
-       });
-   }
-   else{ // Same Here
-       alert("I'm sorry, but geolocation services are not supported by your browser.");
-       map = new google.maps.Map(document.getElementById('map'), {
-           zoom: 18,
-           center: new google.maps.LatLng(locations[0][1], locations[0][2]),
-           mapTypeId: google.maps.MapTypeId.ROADMAP
-       });
+            marker = new google.maps.Marker({ // Marcador do User
+                position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+                map: map,
+                icon: 'http://maps.google.com/mapfiles/kml/pal3/icon32.png'
+            });
 
-   }
-   var infowindow = new google.maps.InfoWindow();
+           
+            for(i = 0; i < locations.length; i++){
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map,
+                    icon: icons[locations[i][3]][0]
+                });
+            }
+
+        });
+    }
+    var infowindow = new google.maps.InfoWindow();
 }
 function testResults(){
    var x = document.getElementById("frm1");
@@ -65,8 +59,5 @@ function testResults(){
        update(text);
        console.log(locations[i]);
 }
-function update(text){
-    console.log('locations size = ' locations.length);
-    console.lof(locations[locations.length]);
-}
+
 

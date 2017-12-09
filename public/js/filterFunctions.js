@@ -72,3 +72,13 @@ function nearby (){
     }
 
 }
+function lista() {
+    var x ="", i;
+    x = ' <ul id="myUL" style = "width: 100%; height: 635px; overflow: auto">';
+    for (i=0; i < locations.length; i++) {
+        console.log('adicionando o ' + locations[i][0]);
+        x = x + '<li><a style = "padding: 0%;" href="#" onclick="googleMaps('+ locations[i][1] + ',' + locations[i][2] + ')"><div class="' + tipo[locations[i][3]] + '">' + locations[i][0] + '<img class = "imgLink" src="' + locations[i][4] + '"></div></a></li>';
+    }
+    x = x + '</ul>';
+    document.getElementById("listaPlace").innerHTML = x;
+}
