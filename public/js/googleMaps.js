@@ -23,7 +23,7 @@ function googleMaps(lat,lng) {
             marker = new google.maps.Marker({ // Marcador do User
                 position: new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
                 map: map,
-                icon: 'http://maps.google.com/mapfiles/kml/pal3/icon32.png'
+                icon: 'https://maps.google.com/mapfiles/kml/pal3/icon32.png'
             });
 
            
@@ -34,15 +34,16 @@ function googleMaps(lat,lng) {
                     icon: icons[locations[i][3]][0]
                 });
             }
-            if(localStorage.getItem("info"))  data = localStorage.getItem("info").split(",");
-            for(i = 0; i < data.length/6; i++){ // Marcador added
-                  marker = new google.maps.Marker({
-                      position: new google.maps.LatLng( data[2 + i * 6],  data[3 + i * 6]),
-                      map: map,
-                      icon: 'http://maps.google.com/mapfiles/kml/pal4/icon39.png'
-                  });
+            if(localStorage.getItem("info")){
+              data = localStorage.getItem("info").split(",");
+              for(i = 0; i < data.length/6; i++){ // Marcador added
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng( data[2 + i * 6],  data[3 + i * 6]),
+                        map: map,
+                        icon: 'https://maps.google.com/mapfiles/kml/pal4/icon39.png'
+                    });
+              }
             }
-           
 
 
 
