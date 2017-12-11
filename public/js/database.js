@@ -1,10 +1,10 @@
         
     let icons = [ // 0 bar, 1 Restaurant, 2 outros, 3 User, 4Custom
-        ['http://maps.google.com/mapfiles/kml/pal2/icon19.png',0],
-        ['http://maps.google.com/mapfiles/kml/pal2/icon55.png',1],
-        ['http://icons.iconarchive.com/icons/graphicloads/100-flat/32/student-icon.png',2],
-        ['http://maps.google.com/mapfiles/kml/pal3/icon32.png',3]
-        ['http://maps.google.com/mapfiles/kml/pal4/icon39.png',4]
+        ['https://maps.google.com/mapfiles/kml/pal2/icon19.png',0],
+        ['https://maps.google.com/mapfiles/kml/pal2/icon55.png',1],
+        ['https://icons.iconarchive.com/icons/graphicloads/100-flat/32/student-icon.png',2],
+        ['https://maps.google.com/mapfiles/kml/pal3/icon32.png',3]
+        ['https://maps.google.com/mapfiles/kml/pal4/icon39.png',4]
     ];
 
     let tipo = ["bar","restaurante","outros","user"];
