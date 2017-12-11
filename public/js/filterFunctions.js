@@ -74,19 +74,16 @@ function nearby (){
 }
 
 function lista() {
-    var x ="", i;
+    var x ="", i, data;
     x = ' <ul id="myUL" style = "width: 100%; height: 635px; overflow: auto">';
     for (i=0; i < locations.length; i++) {
         //console.log('adicionando o ' + locations[i][0]);
         x = x + '<li><a style = "padding: 0%;" href="#" onclick="googleMaps('+ locations[i][1] + ',' + locations[i][2] + ')"><div class="' + tipo[locations[i][3]] + '">' + locations[i][0] + '<img class = "imgLink" src="' + locations[i][4] + '"></div></a></li>';
     }
-    var data = localStorage.getItem("info").split(",");
+    if(localStorage.getItem("info"))  data = localStorage.getItem("info").split(",");
     for(var i = 0; i < data.length/6; i++){ // Marcador added
         x = x + '<li><a style = "padding: 0%;" href="#" onclick="googleMaps('+ data[2 + i * 6] + ',' + data[3 + i * 6] + ')"><div class="' + tipo[data[4 + i * 6]] + '">' + data[i * 6] + '<img class = "imgLink" src="' + data[5 + i * 6] + '"></div></a></li>';
     }
     x = x + '</ul>';
     document.getElementById("listaPlace").innerHTML = x;
-    
-
-
 }
