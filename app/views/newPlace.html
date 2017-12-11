@@ -53,7 +53,7 @@
                      <div class="collapse navbar-collapse" id="navbarResponsive">
                          <ul class="navbar-nav ml-auto">
                              <li class="nav-item">
-                                 <a class="nav-link js-scroll-trigger" href="find">Voltar</a>
+                                 <a class="nav-link js-scroll-trigger" href="find.html">Voltar</a>
                              </li>
 
                          </ul>
@@ -125,12 +125,16 @@
                                </script>
                             </div>
                         </div>
+                        <div id="result"></div>
                         
                         
                     </div>
                 </div>
             </section>
             <script>
+                     var text =  [[]];
+                     var idx = 0;
+
                     lugar = ""
                     function googleMaps(lat,lng) {
                         var marker, i;
@@ -177,24 +181,16 @@
                         }
                         var infowindow = new google.maps.InfoWindow();
                     }
-                    function update(text){
-                        var i;
-                        var idx = locations.length;
-                        console.log('vou add o lugar ' + lugar.position.lat() + ' ' + lugar.position.lng());
-                        locations[idx] = text;
-
-                    }
                     function testResults(){
                         alert('data saved!');
                         var x = document.getElementById("frm1");
-                            var text = [];
                             var i;
                             for (i = 0; i < x.length-1 ;i++) {
+                                if(!text[idx]) text[idx] = [,,,,,];
                                 //console.log(i + ' = ' + x.elements[i].value);
                                 if(i == 2 || i == 3){
-                                    text[i+2] = x.elements[i].value;
-                                    text[i] = i == 2 ? lugar.position.lat():lugar.position.lng()
-
+                                    text[idx][i+2] = x.elements[i].value;
+                                    text[idx][i] = i == 2 ? lugar.position.lat():lugar.position.lng()
                                 }
                                 else if(i == 4){
                                     var num;
@@ -202,16 +198,25 @@
                                     if(tipo == "Bar") num = 0;
                                     else if(tipo == 'Restaurant') num = 1;
                                     else if(tipo == 'University') num = 2;
-                                    text[i] = num;
+                                    text[idx][i] = num;
                                 }
                                 else{
-                                    text[i] = x.elements[i].value;
+                                    text[idx][i] = x.elements[i].value;
                                 }
                             }
-                            for(i = 0; i < 6; i++){
-                                console.log('text[' + i + '] = ' + text[i]);
+                            for(i = 0; i < text.length; i++){
+                                for(var j = 0; j < 6; j++){
+                                    console.log('text[' + i + '][' + j + '] = ' + text[i][j]);
+                                }
                             }
                             update(text);
+                            idx++;
+                          
+                    }
+                    function update(text) {
+                        if(typeof(Storage) !== "undefined") {
+                            localStorage.setItem("info", text);
+                        }
                     }
 
             </script>

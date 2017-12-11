@@ -27,13 +27,25 @@ function googleMaps(lat,lng) {
             });
 
            
-            for(i = 0; i < locations.length; i++){
+            for(i = 0; i < locations.length; i++){ // Marcadores base
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                     map: map,
                     icon: icons[locations[i][3]][0]
                 });
             }
+
+            var data = localStorage.getItem("info").split(",");
+            for(i = 0; i < data.length/6; i++){ // Marcador added
+                  marker = new google.maps.Marker({
+                      position: new google.maps.LatLng( data[2 + i * 6],  data[3 + i * 6]),
+                      map: map,
+                      icon: 'http://maps.google.com/mapfiles/kml/pal4/icon39.png'
+                  });
+            }
+           
+
+
 
         });
     }
