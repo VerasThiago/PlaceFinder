@@ -2,7 +2,7 @@
 
 O projeto basicamente seria um aplicativo web para listar/avaliar restaurantes num determinado raio de distância a partir da localização ou pesquisa de um usuário.
 
-[WEB APP - Clique aqui](https://verasunb.github.io/PlaceFinder/)
+WEB APP - (https://verasthiago.github.io/PlaceFinder/)
 
 
 ### Requirements
